@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SEO Quick Auditor</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="header">
+      <div class="logo-container">
+        <div class="logo-icon">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+        </div>
+        <div>
+          <h1 class="logo">SEO Auditor</h1>
+          <p style="font-size: 9px; font-weight: 700; color: var(--text-light); text-transform: uppercase; margin-top: -2px;">v1.0 • Manifest V3</p>
+        </div>
+      </div>
+      <div id="status-badge" class="badge">Auditing...</div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="overview">Overview</button>
+      <button class="tab-btn" data-tab="details">Detailed Audit</button>
+      <button class="tab-btn" data-tab="export">Export Report</button>
+    </nav>
+
+    <main class="content">
+      <!-- Overview Tab -->
+      <section id="overview" class="tab-pane active">
+        <div class="score-card">
+          <h2 class="score-label">Overall SEO Health</h2>
+          <div class="score-ring">
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <path id="score-path" class="circle" stroke-dasharray="0, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+              <text x="18" y="20.35" class="percentage" id="overall-score">0</text>
+            </svg>
+          </div>
+          <div id="rating-text" class="rating-badge" style="background: #F1F5F9; color: #64748B;">Scanning...</div>
+        </div>
+
+        <h2 class="metrics-section-title">PageSpeed Performance</h2>
+        <div class="pagespeed-metrics" id="metrics-grid">
+          <div class="metric-card loading">
+            <span class="label">Score</span>
+            <span class="value" id="perf-score">--</span>
+            <div class="metric-bar"><div class="metric-progress" id="perf-progress"></div></div>
+          </div>
+          <div class="metric-card loading">
+            <span class="label">LCP</span>
+            <span class="value" id="lcp-val">--</span>
+            <div class="metric-bar"><div class="metric-progress" id="lcp-progress"></div></div>
+          </div>
+          <div class="metric-card loading">
+            <span class="label">CLS</span>
+            <span class="value" id="cls-val">--</span>
+            <div class="metric-bar"><div class="metric-progress" id="cls-progress"></div></div>
+          </div>
+          <div class="metric-card loading">
+            <span class="label">INP</span>
+            <span class="value" id="inp-val">--</span>
+            <div class="metric-bar"><div class="metric-progress" id="inp-progress"></div></div>
+          </div>
+        </div>
+
+        <div class="quick-wins">
+          <h3>Quick Wins Checklist</h3>
+          <p>High-impact changes detected for this page.</p>
+          <ul id="quick-wins-list">
+            <li>Analyzing page content...</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Details Tab -->
+      <section id="details" class="tab-pane">
+        <div class="findings-header">
+          <h2>Audit Findings</h2>
+          <span id="passes-count" class="check-badge">Calculating...</span>
+        </div>
+        <div class="accordion" id="details-accordion">
+          <div class="loading-state">Analyzing details...</div>
+        </div>
+      </section>
+
+      <!-- Export Tab -->
+      <section id="export" class="tab-pane">
+        <div class="export-container">
+          <div class="export-card">
+            <h3>Audit Report</h3>
+            <p>Download the full SEO audit data for your records.</p>
+            <div class="export-actions">
+              <button id="btn-export-txt" class="btn btn-secondary">Download TXT</button>
+              <button id="btn-export-json" class="btn btn-primary">Download JSON</button>
+            </div>
+          </div>
+          <div id="export-preview" class="report-preview">
+            <!-- Preview of content -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="scanned-url">Scanning...</p>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

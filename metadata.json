@@ -1,0 +1,6 @@
+{
+  "name": "SEO Quick Auditor",
+  "description": "A Chrome extension for instant on-page SEO audits, featuring PageSpeed Insights integration and detailed performance metrics.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
